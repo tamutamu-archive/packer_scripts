@@ -1,0 +1,1 @@
+yum install -y wget git zip unzip vim subversion telnet

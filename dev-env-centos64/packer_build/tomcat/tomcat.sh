@@ -29,9 +29,9 @@ EOT
 # mkdir -p Catalina/localhost
 # cp $CURDIR/conf/localhost_context/* Catalina/localhost/
 # sed -i -e 's/\$CONTEXT/$TOMCAT_DEV_CONTEXT/g' Catalina/localhost/dev_context.xml
-# chown tomcat:tomcat $TOMCAT_HOME -R
 # popd
 
+chown tomcat:tomcat $TOMCAT_HOME -R
 
 # init.d
 cp $CURDIR/conf/tomcat7 /etc/init.d/

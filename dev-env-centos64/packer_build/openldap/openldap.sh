@@ -1,2 +1,2 @@
-yum -y install openldap-servers openldap-clients
+yum install -y openldap openldap-servers openldap-clients
 chkconfig slapd on

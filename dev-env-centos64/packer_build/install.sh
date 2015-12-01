@@ -38,6 +38,7 @@ export TOMCAT_DEV_CONTEXT=xample
 bash -l $BASEDIR/tomcat/tomcat.sh
 bash -l $BASEDIR/artifactory/artifactory.sh
 bash -l $BASEDIR/gitbucket/gitbucket.sh
+bash -l $BASEDIR/jenkins/jenkins.sh
 
 
 # ruby develop

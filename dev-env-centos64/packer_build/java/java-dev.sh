@@ -1,4 +1,4 @@
-yum remove java-*
+yum remove -y java-*
 
 cd /tmp
 
@@ -22,14 +22,6 @@ yum install -y java-1.8.0-openjdk-devel
 echo 'export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")' > /etc/profile.d/jdk.sh
 echo 'export PATH=$JAVA_HOME/bin:$PATH' >> /etc/profile.d/jdk.sh
 . /etc/profile.d/jdk.sh
-
-
-# Develop webapps
-mkdir -p /etc/tomcat7/Catalina/localhost
-cp /var/packer_build/java/conf/tomcat/localhost_context/* /etc/tomcat7/Catalina/localhost/
-sed -i -e 's/\$CONTEXT/$TOMCAT_DEV_CONTEXT/g' /etc/tomcat7/Catalina/localhost/dev_context.xml
-
-chown tomcat:tomcat /var/lib/tomcat7 -R
 
 
 # Maven

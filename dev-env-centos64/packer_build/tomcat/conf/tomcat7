@@ -12,7 +12,7 @@ prog='tomcat'
 user='tomcat'
 
 exec='$CATALINA_HOME/bin/catalina.sh'
-pidfile='/var/run/tomcat/catalina.pid'
+pidfile='/var/run/tomcat7/catalina.pid'
 RETVAL=0
 
 start() {
@@ -26,7 +26,7 @@ start() {
 }
 
 stop() {
-	su - $user -c "$exec stop"
+	su - $user -c "$exec stop 30 -force"
 	RETVAL=$?
 	if [ $RETVAL -ne 0 ]; then
 		action $"Stopping $prog: " /bin/false

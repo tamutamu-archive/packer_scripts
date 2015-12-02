@@ -16,12 +16,13 @@ mv /var/lib/apache-tomcat-7.0.65 $TOMCAT_HOME
 useradd -d $TOMCAT_HOME/data tomcat
 
 mkdir -p /var/run/tomcat7
+chown tomcat:tomcat /var/run/tomcat7 -R
 
 cat << EOT >> /etc/profile.d/tomcat7.sh
 export CATALINA_HOME=$TOMCAT_HOME
 export CATALINA_BASE=$TOMCAT_HOME
 export CATALINA_PID=/var/run/tomcat7/catalina.pid
-export CATALINA_OPTS="-server -Xms512m -Xmx1500m -XX:NewRatio=2 -XX:SurvivorRatio=25 -XX:+UseParallelGC -XX:ParallelGCThreads=2"
+export CATALINA_OPTS="-server -Xms512m -Xmx1500m -XX:NewRatio=2 -XX:SurvivorRatio=25 -XX:+UseParallelGC -XX:ParallelGCThreads=2 -Dhudson.model.DownloadService.noSignatureCheck=true"
 EOT
 
 . /etc/profile.d/tomcat7.sh

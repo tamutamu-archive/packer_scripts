@@ -42,3 +42,7 @@ cp $CURDIR/conf/tomcat7 /etc/init.d/
 chmod 755 /etc/init.d/tomcat7
 chkconfig --add tomcat7
 chkconfig tomcat7 on
+
+
+# Apache+Tomcat
+cp $CURDIR/conf/tomcat_proxy.conf /etc/httpd/conf.d/

@@ -26,3 +26,14 @@
  zip packer_0.8.6_windows_386.zip
  
  ```
+
+## リリース物のビルド
+
+- CDからOSインストール、全スクリプトを流してVagrantのBoxを出力、ローカルに登録までを行う。
+
+```shell
+cd dev-env-centos64
+build.bat
+```
+
+## 開発・テストビルド

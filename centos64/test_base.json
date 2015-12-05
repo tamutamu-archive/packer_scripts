@@ -1,17 +1,16 @@
 {
   "provisioners": [
     {
-      "type": "file",
-      "source": "packer_build",
-      "destination": "/tmp"
-    },
-    {
       "type": "shell",
       "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
       "override": {
         "virtualbox-iso": {
           "scripts": [
-            "scripts/provision.sh"
+            "packer_build/base/base.sh",
+            "packer_build/base/vagrant.sh",
+            "packer_build/base/virtualbox.sh",
+            "packer_build/base/cleanup.sh",
+            "packer_build/base/zerodisk.sh"
           ]
         }
       }
@@ -22,7 +21,7 @@
       "type": "vagrant",
       "override": {
         "virtualbox": {
-          "output": "dev-env-centos64.box"
+          "output": "test_base.box"
         }
       },
       "vagrantfile_template": "vagrantfile.template"
@@ -35,8 +34,9 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 20520,
+      "disk_size": 10520,
       "guest_os_type": "RedHat_64",
+      "headless": false,
       "http_directory": "http",
       "iso_checksum": "4a5fa01c81cc300f4729136e28ebe600",
       "iso_checksum_type": "md5",
@@ -50,7 +50,7 @@
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
-        [ "modifyvm", "{{.Name}}", "--memory", "1500" ],
+        [ "modifyvm", "{{.Name}}", "--memory", "1000" ],
         [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
       ]
     }

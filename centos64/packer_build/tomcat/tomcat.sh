@@ -22,20 +22,21 @@ cat << EOT >> /etc/profile.d/tomcat7.sh
 export CATALINA_HOME=$TOMCAT_HOME
 export CATALINA_BASE=$TOMCAT_HOME
 export CATALINA_PID=/var/run/tomcat7/catalina.pid
-export CATALINA_OPTS="-server -Xms512m -Xmx1500m -XX:NewRatio=2 -XX:SurvivorRatio=25 -XX:+UseParallelGC -XX:ParallelGCThreads=2 -Dhudson.model.DownloadService.noSignatureCheck=true"
+export CATALINA_OPTS="-server -Xms1000m -Xmx1300m -XX:NewRatio=2 -XX:SurvivorRatio=25 -XX:+UseParallelGC -XX:ParallelGCThreads=2 -Dhudson.model.DownloadService.noSignatureCheck=true"
 EOT
 
 . /etc/profile.d/tomcat7.sh
 
 
 # Config develop webapps
-# pushd $TOMCAT_HOME
-# mkdir -p Catalina/localhost
-# cp $CURDIR/conf/localhost_context/* Catalina/localhost/
-# sed -i -e 's/\$CONTEXT/$TOMCAT_DEV_CONTEXT/g' Catalina/localhost/dev_context.xml
-# popd
+pushd $TOMCAT_HOME
+mkdir -p Catalina/localhost
+cp $CURDIR/conf/localhost_context/* Catalina/localhost/
+sed -i -e 's/\$CONTEXT/$TOMCAT_DEV_CONTEXT/g' Catalina/localhost/dev_context.xml
+popd
 
 chown tomcat:tomcat $TOMCAT_HOME -R
+
 
 # init.d
 cp $CURDIR/conf/tomcat7 /etc/init.d/

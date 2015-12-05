@@ -1,3 +1,5 @@
+sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
+
 sed --in-place "s/SELINUX=enforcing/SELINUX=permissive/g" /etc/selinux/config
 setenforce 0
 
@@ -57,9 +59,11 @@ yum clean all
 yum clean metadata
 yum -y update
 
-yum -y install gcc make gcc-c++ \
-		http://vault.centos.org/6.4/os/x86_64/Packages/kernel-devel-`uname -r`.rpm \
-		perl
-
 chkconfig iptables off
 chkconfig ip6tables off
+
+
+# service sshd stop
+
+reboot
+sleep 30

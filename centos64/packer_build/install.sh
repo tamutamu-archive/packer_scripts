@@ -4,14 +4,13 @@
 BASEDIR=/var/packer_build
 
 # base
-bash -l $BASEDIR/base/base.sh
+### bash -l $BASEDIR/base/base.sh
 bash -l $BASEDIR/base/vagrant.sh
 bash -l $BASEDIR/base/virtualbox.sh
-## bash -l $BASEDIR/base/zerodisk.sh
 
 
 # common develop
-bash -l $BASEDIR/common-dev/common-dev.sh
+bash -l $BASEDIR/common_dev/common_dev.sh
 
 
 # Apache 
@@ -29,11 +28,11 @@ bash -l $BASEDIR/openldap/openldap.sh
 
 
 # java develop
-bash -l $BASEDIR/java/java-dev.sh
+bash -l $BASEDIR/java/java_dev.sh
 
 
 # Tomcat develop
-export TOMCAT_DEV_CONTEXT=xample
+export TOMCAT_DEV_CONTEXT=sample
 
 bash -l $BASEDIR/tomcat/tomcat.sh
 bash -l $BASEDIR/artifactory/artifactory.sh
@@ -60,3 +59,4 @@ bash -l $BASEDIR/redmine/redmine.sh
 
 # terminate
 bash -l $BASEDIR/base/cleanup.sh
+bash -l $BASEDIR/base/zerodisk.sh

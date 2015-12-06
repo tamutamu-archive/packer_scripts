@@ -28,12 +28,32 @@
 
 ```shell
 cd centos64
-build.bat
+
+# dev_centos64.box ファイルの生成。
+packer build template.json
+
+# Boxファイルをローカルに登録
+vagrant box add dev_centos64 dev_centos64.box
+
+# releaseフォルダで動作確認
+cd release
+vagrant init dev_centos64
+vagrant up
 ```
 
 ## 開発・テストビルド
 
 ```shell
 cd centos64
-test_base.bat
+
+# test_base.box ファイルの生成。
+packer build test_base.json
+
+# Boxファイルをローカルに登録
+vagrant box add test_base test_base.box
+
+# developフォルダで動作確認
+cd develop
+vagrant init test_base
+vagrant up
 ```

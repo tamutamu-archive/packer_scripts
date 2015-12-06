@@ -24,7 +24,7 @@
  2. C:\HashiCorp\Packer に*.exe群を全部格納。
  3. 環境変数PATHに`C:\HashiCorp\Packer`を追加。
 
-## リリース物のビルド
+## リリース用ビルド
 
 ```shell
 cd centos64
@@ -41,7 +41,7 @@ vagrant init dev_centos64
 vagrant up
 ```
 
-## 開発・テストビルド
+## 開発・検証Try&Error用ビルド
 
 ```shell
 cd centos64

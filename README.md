@@ -19,13 +19,9 @@
 - [Vagrant](https://www.vagrantup.com/downloads.html)
  - ダウンロードしてインストール。
 - [Packer](https://www.packer.io/downloads.html) 
- - zipをダウンロードして解凍してPATHを通す。
- ```
- # C:\HashiCorp\packer_0.8.6_windows_386.zip に置く。
- cd C:\HashiCorp
- zip packer_0.8.6_windows_386.zip
- 
- ```
+ 1. zipをダウンロードして解凍。
+ 2. C:\HashiCorp\Packer に*.exe群を全部格納。
+ 3. 環境変数PATHに`C:\HashiCorp\Packer`を追加。
 
 ## リリース物のビルド
 

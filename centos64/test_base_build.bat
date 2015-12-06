@@ -1,4 +1,4 @@
-packer build test_base.json > testbase.log
+packer build test_base.json > testbase.log 2>&1
 
 @if not "%ERRORLEVEL%"  == "0" (
   echo "ƒGƒ‰[I"

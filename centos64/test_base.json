@@ -7,6 +7,7 @@
         "virtualbox-iso": {
           "scripts": [
             "packer_build/base/base.sh",
+            "packer_build/base/reboot.sh",
             "packer_build/base/vagrant.sh",
             "packer_build/base/virtualbox.sh",
             "packer_build/base/cleanup.sh",

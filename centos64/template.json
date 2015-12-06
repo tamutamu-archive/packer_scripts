@@ -11,7 +11,7 @@
       "override": {
         "virtualbox-iso": {
           "scripts": [
-            "scripts/base_provision.sh",
+            "scripts/pre_provision.sh",
             "scripts/provision.sh"
           ]
         }

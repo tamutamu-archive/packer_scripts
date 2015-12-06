@@ -1,4 +1,4 @@
-packer build template.json > build.log
+packer build template.json > build.log 2>&1
 
 @if not "%ERRORLEVEL%"  == "0" (
   echo "ƒGƒ‰[I"

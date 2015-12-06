@@ -1,11 +1,17 @@
+### Disable Setting
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 
 sed --in-place "s/SELINUX=enforcing/SELINUX=permissive/g" /etc/selinux/config
 setenforce 0
 
-rm -f /etc/yum.repos.d/*
+chkconfig iptables off
+chkconfig ip6tables off
 
-cat << 'EOT' >> /etc/yum.repos.d/CentOS-Base.repo
+
+
+### Yum Update
+
+cat << 'EOT' > /etc/yum.repos.d/CentOS-Base.repo
 [base]
 name=CentOS-$releasever - Base
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
@@ -58,12 +64,3 @@ EOT
 yum clean all
 yum clean metadata
 yum -y update
-
-chkconfig iptables off
-chkconfig ip6tables off
-
-
-# service sshd stop
-
-reboot
-sleep 30

@@ -13,7 +13,7 @@
 4. [人間] 出来上がったBOXをローカルに登録する(vagrant addコマンド)。
 5. [Vagrant] 登録したイメージを起動(vagrant up)。
 
-## 必要なソフトのインストール(この順番で)
+## 必要なソフトのインストール
 
 - [Oracle Virtual Box](http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html?ssSourceSiteId=otnjp)
  - ダウンロードしてインストール。

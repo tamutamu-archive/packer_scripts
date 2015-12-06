@@ -1,10 +1,11 @@
 # packer_scripts
 
-## 何？
+## 目的
 
-- CentOS6.4に色んなアプリやツールを入れるシェルスクリプトを走らせて、VagrantのBOXを作成するもの。
+- 各種ミドルやソフトをインストールするスクリプトを作成。
+- スクリプトを検証出来る環境を用意。
 
-## 大まかな流れ
+## 概要
 
 1. [Packer] CentOSをCDからインストール。
 2. [Packer] OS再起動して、指定したインストールスクリプトを全部流す。(JavaとかMySQLとかインストールされる)。
@@ -25,11 +26,14 @@
 
 ## リリース物のビルド
 
-- CDからOSインストール、全スクリプトを流してVagrantのBoxを出力、ローカルに登録までを行う。
-
 ```shell
-cd dev-env-centos64
+cd centos64
 build.bat
 ```
 
 ## 開発・テストビルド
+
+```shell
+cd centos64
+test_base.bat
+```

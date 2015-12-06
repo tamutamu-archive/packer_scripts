@@ -10,7 +10,7 @@
 1. [Packer] CentOSをCDからインストール。
 2. [Packer] OS再起動して、指定したインストールスクリプトを全部流す。(JavaとかMySQLとかインストールされる)。
 3. [Packer] 出来上がった環境をVagrant用のイメージ(Boxファイル)として出力。
-4. [人間] 出来上がったBOXをローカルに登録する(vagrant addコマンド)。
+4. [Vagrant] 出来上がったBOXをローカルに登録する(vagrant addコマンド)。
 5. [Vagrant] 登録したイメージを起動(vagrant up)。
 
 ## 必要なソフトのインストール

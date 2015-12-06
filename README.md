@@ -23,6 +23,8 @@
  1. zipをダウンロードして解凍。
  2. C:\HashiCorp\Packer に*.exe群を全部格納。
  3. 環境変数PATHに`C:\HashiCorp\Packer`を追加。
+- プロキシ環境化では下記環境変数設定
+ - set http_proxy=http://[プロキシホスト]:[ポート]
 
 ## リリース用ビルド
 

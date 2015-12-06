@@ -41,7 +41,7 @@ vagrant init dev_centos64
 vagrant up
 ```
 
-## 開発・検証Try&Error用ビルド
+## 検証Try&Error用ビルド
 
 ```shell
 cd centos64

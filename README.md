@@ -83,8 +83,8 @@ packer build test_base.json
 # Boxファイルをローカルに登録
 vagrant box add test_base test_base.box
 
-# developフォルダで動作確認
-cd develop
+# debugフォルダで動作確認
+cd debug
 vagrant init test_base
 vagrant up
 ```

@@ -7,6 +7,9 @@ cd /var/packer_build
 find ./ -name '*.sh' -type f -print | xargs chmod 777
 
 
-# pre provision
-/var/packer_build/base/base.sh
-/var/packer_build/base/reboot.sh
+### execute provisoning scripts
+BASEDIR=/var/packer_build
+
+# base
+bash -l $BASEDIR/base/base.sh
+bash -l $BASEDIR/base/reboot.sh

@@ -11,7 +11,8 @@
       "override": {
         "virtualbox-iso": {
           "scripts": [
-            "scripts/pre_provision.sh",
+            "scripts/base1_provision.sh",
+            "scripts/base2_provision.sh",
             "scripts/provision.sh"
           ]
         }
@@ -52,6 +53,7 @@
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--nic1", "nat"],
         [ "modifyvm", "{{.Name}}", "--memory", "1500" ],
         [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
       ]

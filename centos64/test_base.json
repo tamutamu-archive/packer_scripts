@@ -1,17 +1,18 @@
 {
   "provisioners": [
     {
+      "type": "file",
+      "source": "packer_build",
+      "destination": "/tmp"
+    },
+    {
       "type": "shell",
       "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
       "override": {
         "virtualbox-iso": {
           "scripts": [
-            "packer_build/base/base.sh",
-            "packer_build/base/reboot.sh",
-            "packer_build/base/vagrant.sh",
-            "packer_build/base/virtualbox.sh",
-            "packer_build/base/cleanup.sh",
-            "packer_build/base/zerodisk.sh"
+            "scripts/base1_provision.sh",
+            "scripts/base2_provision.sh"
           ]
         }
       }
@@ -51,6 +52,7 @@
       "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
       "virtualbox_version_file": ".vbox_version",
       "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--nic1", "nat"],
         [ "modifyvm", "{{.Name}}", "--memory", "1000" ],
         [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
       ]

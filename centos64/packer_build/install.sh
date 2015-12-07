@@ -3,11 +3,6 @@
 ### execute provisoning scripts
 BASEDIR=/var/packer_build
 
-# base
-### bash -l $BASEDIR/base/base.sh
-bash -l $BASEDIR/base/vagrant.sh
-bash -l $BASEDIR/base/virtualbox.sh
-
 
 # common develop
 bash -l $BASEDIR/common_dev/common_dev.sh

@@ -25,7 +25,7 @@
  3. 環境変数PATHに`C:\HashiCorp\Packer`を追加。
 
 ## プロキシ環境化の設定
-- 下記の環境変数設定
+- ホストＯＳの環境変数に「http_proxy」環境変数を設定。
  - set http_proxy=http://[プロキシホスト]:[ポート]
 - centos64/template.json, centos64/test_base.jsonの「##★追加」を追記。
 ```json
@@ -49,7 +49,7 @@
         }
 
 ```
- - centos64/scripts/proxy.sh を編集。
+ - centos64/scripts/proxy.sh を編集。プロキシの設定をする。
 ```json
  # export http_proxy=http://[proxyhost]:[port]
  export http_proxy=http://myproxy:8080

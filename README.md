@@ -23,8 +23,37 @@
  1. zipをダウンロードして解凍。
  2. C:\HashiCorp\Packer に*.exe群を全部格納。
  3. 環境変数PATHに`C:\HashiCorp\Packer`を追加。
-- プロキシ環境化では下記環境変数設定
+
+## プロキシ環境化の設定
+- 下記の環境変数設定
  - set http_proxy=http://[プロキシホスト]:[ポート]
+- centos64/template.json, centos64/test_base.jsonの「##★追加」を追記。
+```json
+{
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "packer_build",
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "override": {
+        "virtualbox-iso": {
+          "scripts": [
+            "scripts/proxy.sh", ##★追加
+            "scripts/base1_provision.sh",
+            "scripts/base2_provision.sh"
+          ]
+        }
+
+```
+ - centos64/scripts/proxy.sh を編集。
+```json
+ # export http_proxy=http://[proxyhost]:[port]
+ export http_proxy=http://myproxy:8080
+```
 
 ## リリース用ビルド
 

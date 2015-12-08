@@ -86,5 +86,18 @@ vagrant box add test_base test_base.box
 # debugフォルダで動作確認
 cd debug
 vagrant init test_base
+```
+
+Vagrantfileの編集。
+```
+## 上の階層のpacker_buildフォルダを共有マウントする。
+config.vm.synced_folder "../packer_build/", "/var/packer_build/" ,owner: "root", group: "root"
+
+## OS起動してからtest_script.shを実行。テストしたいスクリプト呼び出しを書いておく。
+config.vm.provision "shell", inline: "/var/packer_build/test_script.sh"
+
+```
+
+```
 vagrant up
 ```

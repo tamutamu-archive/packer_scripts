@@ -36,7 +36,6 @@ export MAVEN_HOME=/opt/maven
 export PATH=$PATH:$MAVEN_HOME/bin
 EOT
 
-chmod +x /etc/profile.d/maven.sh
 . /etc/profile.d/maven.sh
 
 

@@ -3,6 +3,8 @@ echo "Install Apache Maven 3"
 ##################################################
 # Apache Maven 3                                 #
 ##################################################
+
+CURDIR=$(cd $(dirname $0); pwd)
 cd /tmp
 wget http://www.eu.apache.org/dist/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.zip
 unzip -q apache-maven-3.3.3-bin.zip
@@ -15,3 +17,5 @@ export PATH=$PATH:$MAVEN_HOME/bin
 EOT
 
 . /etc/profile.d/maven.sh
+
+\cp -f $CURDIR/conf/mvn3/settings.xml /opt/maven/conf/

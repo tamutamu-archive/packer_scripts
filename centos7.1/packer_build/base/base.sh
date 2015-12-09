@@ -68,3 +68,8 @@ yum -y update
 
 
 yum -y install gcc make gcc-c++ perl zip unzip bzip2
+
+cat << EOF > /etc/sudoers.d/base
+Defaults !secure_path
+Defaults env_keep += "PATH"
+EOF

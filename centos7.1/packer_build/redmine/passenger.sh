@@ -1,3 +1,9 @@
+echo "Install Apache Passenger"
+
+##################################################
+#  Apache Passenger                              #
+##################################################
+
 gem install passenger
 
 passenger-install-apache2-module --auto --languages ruby

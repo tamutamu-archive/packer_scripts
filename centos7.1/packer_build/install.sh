@@ -13,19 +13,15 @@ bash -l $BASEDIR/apache/apache.sh
 
 
 # database
-export MYSQL_HOST=localhost
-export MYSQL_ROOT_PASSWORD=password
-
-bash -l $BASEDIR/mysql/mysql.sh
 bash -l $BASEDIR/postgresql/postgresql.sh
-bash -l $BASEDIR/openldap/openldap.sh
 
 
-# java develop
-bash -l $BASEDIR/java/java_dev.sh
+# java
+bash -l $BASEDIR/java/jdk8.sh
+bash -l $BASEDIR/java/mvn3.sh
 
 
-# Tomcat develop
+# Tomcat
 export TOMCAT_DEV_CONTEXT=sample
 
 bash -l $BASEDIR/tomcat/tomcat.sh
@@ -34,7 +30,11 @@ bash -l $BASEDIR/gitbucket/gitbucket.sh
 bash -l $BASEDIR/jenkins/jenkins.sh
 
 
-# ruby develop
+# SonarQube
+bash -l $BASEDIR/sonar/sonar.sh
+
+
+# ruby 
 export RUBY_VERSION=2.0.0-p643
 
 bash -l $BASEDIR/ruby/ruby.sh
@@ -49,6 +49,10 @@ export REDMINE_PATH=/var/lib
 export REDMINE_VER=2.3.2
 
 bash -l $BASEDIR/redmine/redmine.sh
+bash -l $BASEDIR/redmine/redmine_code_review.sh
+bash -l $BASEDIR/redmine/backlogs.sh
+bash -l $BASEDIR/redmine/github_hook_plugin.sh
+bash -l $BASEDIR/redmine/passenger.sh
 
 
 # terminate

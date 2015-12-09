@@ -1,5 +1,8 @@
-echo 'Install Backlogs plugin'
+echo "Install Redmine Backlogs"
 
+##################################################
+#  Redmine Backlogs                              #
+##################################################
 
 cd $REDMINE_PATH/redmine-$REDMINE_VER/plugins
 git clone https://github.com/backlogs/redmine_backlogs.git
@@ -22,25 +25,19 @@ bundle exec rake tmp:cache:clear RAILS_ENV=production
 bundle exec rake tmp:sessions:clear RAILS_ENV=production
 
 # Setting pdf
+cd /tmp
 \cp -f $REDMINE_PATH/redmine-$REDMINE_VER/plugins/redmine_backlogs/lib/labels/labels.yaml{.default,}
-wget http://dl.ipafont.ipa.go.jp/IPAexfont/IPAexfont00301.zip -O /tmp/IPAexfont00301.zip
-
-pushd /tmp
-
+wget http://dl.ipafont.ipa.go.jp/IPAexfont/IPAexfont00301.zip -O IPAexfont00301.zip
 unzip -q IPAexfont00301.zip
-mv /tmp/IPAexfont00301/*.ttf $REDMINE_PATH/redmine-$REDMINE_VER/plugins/redmine_backlogs/lib/ttf/
-
-popd
-
-
-pushd $REDMINE_PATH/redmine-$REDMINE_VER/plugins/redmine_backlogs/lib
-
+mv IPAexfont00301/*.ttf $REDMINE_PATH/redmine-$REDMINE_VER/plugins/redmine_backlogs/lib/ttf/
+cd $REDMINE_PATH/redmine-$REDMINE_VER/plugins/redmine_backlogs/lib
 cp ./backlogs_printable_cards.{rb,old}
 sed -i -e 's/D.*Bold\.ttf"/ipaexg.ttf"/' ./backlogs_printable_cards.rb
 sed -i -e 's/D.*Oblique\.ttf"/ipaexg.ttf"/' ./backlogs_printable_cards.rb
 sed -i -e 's/D.*BoldOblique\.ttf"/ipaexg.ttf"/' ./backlogs_printable_cards.rb
 sed -i -e 's/DejaVuSans.ttf"/ipaexg.ttf"/' ./backlogs_printable_cards.rb
 
-popd
 
+# Bundle Install
+cd $REDMINE_PATH/redmine-$REDMINE_VER
 bundle exec rake redmine:backlogs:install RAILS_ENV=production story_trackers=story task_tracker=task

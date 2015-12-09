@@ -1,4 +1,8 @@
-CURDIR=$(cd $(dirname $0); pwd)
+echo "Install Ruby(rbenv)"
+
+##################################################
+# Ruby2.0                                        #
+##################################################
 
 yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel \
                libcurl-devel ImageMagick ImageMagick-devel libyaml-devel \
@@ -10,14 +14,10 @@ if [ ! $(which git) ]; then
   exit
 fi
 
-# Set where rbenv is going to be installed:
-if (( UID == 0 )) ; then
-  RBENV_ROOT="/usr/local/rbenv"
-  PROFILE="/etc/profile.d/rbenv.sh"
-else
-  RBENV_ROOT="${HOME}/.rbenv"
-  PROFILE="${HOME}/.bash_profile"
-fi
+
+RBENV_ROOT="/usr/local/rbenv"
+PROFILE="/etc/profile.d/rbenv.sh"
+
 
 # Install rbenv:
 if [ ! -f $RBENV_ROOT/bin/rbenv ] ; then
@@ -46,7 +46,11 @@ if [ ! -f $RBENV_ROOT/bin/ruby-build ] ; then
   popd
 fi
 
-cp $CURDIR/conf/sudo/rbenv /etc/sudoers.d/rbenv
+
+cat << EOF > /etc/sudoers.d/rbenv
+Defaults env_keep += "RBENV_ROOT"
+EOF
+
 
 . $PROFILE
 rbenv install -v $RUBY_VERSION

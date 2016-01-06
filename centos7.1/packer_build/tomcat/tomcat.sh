@@ -6,7 +6,7 @@ CURDIR=$(cd $(dirname $0); pwd)
 TOMCAT_HOME=/var/lib/tomcat7
 
 cd /tmp
-wget http://ftp.riken.jp/net/apache/tomcat/tomcat-7/v7.0.65/bin/apache-tomcat-7.0.65.tar.gz
+wget http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.65/bin/apache-tomcat-7.0.65.tar.gz 
 tar xzf apache-tomcat-7.0.65.tar.gz
 
 mv apache-tomcat-7.0.65 /var/lib

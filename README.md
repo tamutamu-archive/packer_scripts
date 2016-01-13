@@ -98,6 +98,7 @@ config.vm.provision "shell", inline: "/var/packer_build/test_script.sh"
 
 ```
 
+起動
 ```
 vagrant up
 ```

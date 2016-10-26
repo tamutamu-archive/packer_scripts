@@ -16,6 +16,7 @@ prog=tomcat
 
 
 start() {
+    mkdir -p /var/run/tomcat7 && chown tomcat:tomcat /var/run/tomcat7
     echo -n $"Starting $prog: "
     daemon --user $TOMCAT_USER $CATALINA_HOME/bin/startup.sh > /dev/null
     RETVAL=$?

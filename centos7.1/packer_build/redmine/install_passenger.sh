@@ -1,3 +1,6 @@
+gem install rack -v=1.6.4
+gem install passenger -v=5.0.30 --conservative
+
 gem install passenger
 
 passenger-install-apache2-module --auto --languages ruby

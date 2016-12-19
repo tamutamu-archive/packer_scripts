@@ -1,6 +1,6 @@
 yum -y groupinstall "Development Tools"
 
-yum localinstall -y http://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/pgdg-centos94-9.4-1.noarch.rpm
+yum localinstall -y http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-centos94-9.4-1.noarch.rpm
 yum install -y postgresql94-server postgresql-libs postgresql-devel
 
 cat << 'EOT' >> /etc/profile.d/postgres.sh

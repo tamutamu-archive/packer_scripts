@@ -26,9 +26,9 @@ echo 'export PATH=$JAVA_HOME/bin:$PATH' >> /etc/profile.d/jdk.sh
 
 # Maven
 cd /opt
-wget http://www.eu.apache.org/dist/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.zip
-unzip -q apache-maven-3.3.3-bin.zip
-mv apache-maven-3.3.3 maven
+wget http://ftp.riken.jp/net/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
+unzip -q apache-maven-3.3.9-bin.zip
+mv apache-maven-3.3.9 maven
 ln -s /opt/maven/bin/mvn /usr/bin/mvn
 
 cat << 'EOT' >> /etc/profile.d/maven.sh

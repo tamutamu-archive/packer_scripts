@@ -4,7 +4,7 @@
 BASEDIR=/var/packer_build
 
 ### base
-#(cd $BASEDIR/base && ./base.sh)
+(cd $BASEDIR/base && ./base.sh)
 
 
 ### common develop
@@ -35,8 +35,13 @@ BASEDIR=/var/packer_build
 
 
 ### Tomcat develop
-(cd $BASEDIR/tomcat-8 && ./tomcat-8.sh)
-(cd $BASEDIR/jenkins-2 && ./jenkins-2.sh)
+#(cd $BASEDIR/tomcat-8 && ./tomcat-8.sh)
+#(cd $BASEDIR/jenkins-2 && ./jenkins-2.sh)
+
+
+### Weblogic12c
+#(cd $BASEDIR/weblogic-12c && ./weblogic-12c.sh)
+
 
 ### ruby develop
 

@@ -31,7 +31,18 @@ mkdir -p /opt/clamav
 \cp -f "${CURDIR}"/conf/clamav /etc/cron.d/
 
 
+### Proxy
+if [ ! -z "${HTTP_PROXY+x}" ] ; then
+  proxy_host=$(echo ${HTTP_PROXY} | cut -d ':' -f 1-2)
+  proxy_port=$(echo ${HTTP_PROXY} | cut -d ':' -f 3)
+
+cat <<EOF >> /etc/freshclam.conf
+HTTPProxyServer ${proxy_host}
+HTTPProxyPort ${proxy_port}
+EOF
+
+fi
+
+
 ### Update
 freshclam -u root
-
-

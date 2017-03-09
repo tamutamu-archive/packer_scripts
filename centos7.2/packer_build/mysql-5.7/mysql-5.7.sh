@@ -18,13 +18,13 @@ systemctl restart mysqld.service
 
 ## Create General Database & User.
 mysql -uroot <<EOF 
-create database "${DB_NAME}" default character set utf8;
-grant all on "${DB_NAME}"* to "${$DB_USER}"@'%' identified by '"${DB_USER_PASS}';
+create database ${DB_NAME} default character set utf8;
+grant all on ${DB_NAME}.* to ${DB_USER}@'%' identified by '${DB_USER_PASS}';
 EOF
 
 
 ## Secure Settings.
-sed  -e "s/#MYSQL_ROOT_PASS#/"${MYSQL_ROOT_PASS}/g" \
+sed  -e "s/#MYSQL_ROOT_PASS#/${MYSQL_ROOT_PASS}/g" \
  $CURDIR/conf/mysql_secure_installation.sql.tmpl > $CURDIR/conf/mysql_secure_installation.sql
 
 mysql -uroot < $CURDIR/conf/mysql_secure_installation.sql

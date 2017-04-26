@@ -28,6 +28,7 @@ systemctl enable clamd@scan.service
 ### Cron
 mkdir -p /opt/clamav
 \cp -f "${CURDIR}"/conf/clamav.sh /opt/clamav/
+chmod a+x /opt/clamav/clamav.sh
 \cp -f "${CURDIR}"/conf/clamav /etc/cron.d/
 
 

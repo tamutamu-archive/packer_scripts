@@ -7,11 +7,10 @@
     },
     {
       "type": "shell",
-      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
+      "execute_command": "echo 'vagrant'|sudo -S /bin/bash -l '{{.Path}}'",
       "override": {
         "virtualbox-iso": {
           "scripts": [
-            "scripts/proxy.sh",
             "scripts/base.sh",
             "scripts/reboot.sh",
             "scripts/vagrant.sh",

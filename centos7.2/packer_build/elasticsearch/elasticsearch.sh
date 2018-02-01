@@ -21,4 +21,8 @@ EOT
 
 yum -y install elasticsearch-6.1.1
 
+pushd /usr/share/elasticsearch
+./bin/elasticsearch-plugin install analysis-kuromoji
+popd
+
 popd

@@ -1,13 +1,24 @@
 #!/bin/bash
 set -euo pipefail
 
-echo 'Install JDK 6,7,8'
+echo 'Install Elasticsearch'
 CURDIR=$(cd $(dirname $0); pwd)
 
 pushd /tmp
 
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.1.1.zip
-unzip -q elasticsearch-6.1.1.zip
-mv elasticsearch-6.1.1 /opt/elasticsearch
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+cat << EOT > /etc/yum.repos.d/elasticsearch.repo
+[elasticsearch-6.x]
+name=Elasticsearch repository for 6.x packages
+baseurl=https://artifacts.elastic.co/packages/6.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+EOT
+
+yum -y install elasticsearch-6.1.1
 
 popd

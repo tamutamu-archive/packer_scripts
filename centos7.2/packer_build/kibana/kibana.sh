@@ -1,14 +1,32 @@
 #!/bin/bash
 set -euo pipefail
 
-echo 'Install JDK 6,7,8'
+echo 'Install kiban.'
 CURDIR=$(cd $(dirname $0); pwd)
 
 
 pushd /tmp
 
-wget https://artifacts.elastic.co/downloads/kibana/kibana-6.1.1-linux-x86_64.tar.gz
-tar zxf ./kibana-6.1.1-linux-x86_64.tar.gz
-mv ./kibana-6.1.1-linux-x86_64 /opt/kiban
+cat << EOT > /etc/yum.repos.d/kibana.repo
+[kibana-6.x]
+name=Kibana repository for 6.x packages
+baseurl=https://artifacts.elastic.co/packages/6.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+EOT
+
+yum -y install kibana-6.1.1
+
+### config
+sed -i:bk \
+    -e 's@^\(#elasticsearch.url:.*$\)@\1\nelasticsearch.url: http://localhost:9200@' \
+    -e 's@^\(#server.port:.*$\)@\1\nserver.port: 5601@' \
+    /etc/kibana/kibana.yml
 
 popd
+
+systemctl restart kibana
+systemctl enable kibana

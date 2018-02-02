@@ -23,6 +23,17 @@ yum -y install elasticsearch-6.1.1
 
 pushd /usr/share/elasticsearch
 ./bin/elasticsearch-plugin install analysis-kuromoji
+./bin/elasticsearch-plugin install analysis-icu
 popd
 
+
+### config
+sed -i:bk \
+    -e 's@^\(#http.port:.*$\)@\1\nhttp.port: 9200@' \
+    -e 's@^\(#network.host:.*$\)@\1\nnetwork.host: ["_local_"]@' \
+    /etc/elasticsearch/elasticsearch.yml
+
 popd
+
+systemctl restart elasticsearch
+systemctl enable elasticsearch

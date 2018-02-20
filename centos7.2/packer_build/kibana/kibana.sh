@@ -23,6 +23,7 @@ yum -y install kibana-6.1.1
 ### config
 sed -i:bk \
     -e 's@^\(#elasticsearch.url:.*$\)@\1\nelasticsearch.url: http://localhost:9200@' \
+    -e 's@^\(#server.host:.*$\)@\1\nserver.host: "0.0.0.0"@' \
     -e 's@^\(#server.port:.*$\)@\1\nserver.port: 5601@' \
     /etc/kibana/kibana.yml
 
